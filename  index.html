@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Taskinator</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="page-title">Code Challenge!</h1>
+        <p>Click the button below to Start the Quiz!</p>
+        <button class="btn" id="start" >Start Quiz</button>
+    </header>
+    <section id="quiz">
+        <div id="countdown">Time:</div>
+        <div id="questions"><p>Questions Placeholder</p></div>
+        <button id="1" onclick="checkAnswer('a')">A</button>
+        <button id="2" onclick="checkAnswer('b')">B</button>
+        <button id="3" onclick="checkAnswer('c')">C</button>
+        <button id="4" onclick="checkAnswer('d')">D</button>
+        <div id="result"></div>
+    </section>
+    <section class="enter-initials hidden">
+        <h3>Enter your initials and save.</h3>
+        <p id="current-score"></p>
+        <form id="initials-form">
+            <div class="input">
+                <input type="text" name="initials-input" placeholder="Enter Initials">
+            </div>
+            <div class="button">
+                <button class="btn" id="submit-initials">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </section>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
