@@ -20,8 +20,28 @@ var questions = [{
     answer2: "JavaScript's syntax is loosely based on Java's",
     answer3: "They both originated on ther island of Java",
     answer4: "None of The Above",
-    correctAnswer: "b"},  
-
+    correctAnswer: "b"},
+    {
+    question: "What is the correct JavaScript syntax to write Hello World?",
+    answer1: "System.out.println(\"Hello World\")",
+    answer2: "println(\"Hello World\")",
+    answer3: "document.write(\"Hello World\")",
+    answer4: "response.write(\"Hello World\")",
+    correctAnswer: "c"},
+    {
+    question: "What is the correct syntax for referring to an external script called \"abc.js\"?",
+    answer1: "<script href=\"abc.js\">",
+    answer2: "<script name=\"abc.js\">",
+    answer3: "<script src=\"abc.js\">",
+    answer4: "None of The Above",
+    correctAnswer: "c"},
+    {
+    question: "Which types of image maps can be used with JavaScript?",
+    answer1: "Server-side image maps",
+    answer2: "Client-side image maps",
+    answer3: "Server-side image maps and Client-side image maps",
+    answer4: "None of The Above",
+    correctAnswer: "b"},
 ];
 
 var currentQuestionIndex = 0;
