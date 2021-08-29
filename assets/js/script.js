@@ -26,15 +26,27 @@ var questions = [{
 
 var currentQuestionIndex = 0;
 
-var displayQuestion = function () {
+
+function displayQuestion(){
+   // gameOverEl.style.display = "none";
+   
     var currentQuestion = questions[currentQuestionIndex];
-    questionsEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
+    questionsEl.innerHTML = "<a>" + currentQuestion.question + "</a>";
     A.innerHTML = currentQuestion.answer1;
+    B.innerHTML = currentQuestion.answer2;
+    C.innerHTML = currentQuestion.answer3;
+    D.innerHTML = currentQuestion.answer4;
 };
+// var displayQuestion = function () {
+//     var currentQuestion = questions[currentQuestionIndex];
+//     questionsEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
+//     A.innerHTML = currentQuestion.answer1;
+// };
 
 function startQuiz(){
 
     displayQuestion();
+  //  quizEl.style.display = "block";
 }
 
 startBtnEl.addEventListener("click",startQuiz);

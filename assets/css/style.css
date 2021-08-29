@@ -32,6 +32,7 @@
     margin: 5px 0 20px;
     font-size: 2rem;
   }
+
   
   p,
   li {
@@ -68,6 +69,10 @@
     border-top: 5px solid var(--primary);
   }
   
+  .questions {
+    vertical-align: text-top;
+    }
+
   .page-title {
     color: var(--primary);
     margin-bottom: 5px;
@@ -94,45 +99,7 @@
     font-size: 2.6rem;
   }
   
-  .task-list {
-    list-style: none;
-    padding: 15px;
-    height: calc(100% - 50px);
-    background: rgb(196, 196, 196);
-    border-radius: 12px;
-    border: 2px solid var(--grey);
-  }
-  
-  .task-item {
-    color: var(--grey);
-    padding: 15px 15px;
-    border: 2px solid var(--grey);
-    background: var(--tertiary);
-    border-radius: 12px;
-    margin-bottom: 20px;
-  }
-  
-  .task-name {
-    margin: 0;
-    font-size: 1.8rem;
-  }
-  
-  .task-type {
-    color: var(--secondary);
-    font-size: 1.55rem;
-  }
-  .task-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 10px 0 5px 0;
-    justify-content: space-between;
-  }
-  
-  .task-actions button,
-  .task-actions select {
-    flex: 1;
-  }
+
   
   .btn {
     outline: none;
