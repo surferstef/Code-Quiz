@@ -10,7 +10,6 @@
 * SO THAT I can gauge my progress compared to my peers
 
 
-
 ## Built With
 * JavaScript
 * HTML5
