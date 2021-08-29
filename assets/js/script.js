@@ -4,9 +4,10 @@ var quizEl = document.getElementById("quiz");
 var questionsEl = document.getElementById("questions");
 var resultsEl = document.getElementById("result");
 var currentScore = document.getElementById('current-score');
-
 var submitScoreBtn = document.getElementById("submitScore");
 var submitBtnEl = document.querySelector('#submit-initials');
+var initialsEl = document.querySelector('.enter-initials');
+var finalScoreEl = document.getElementById("finalScore");
 
 var A = document.getElementById("1");
 var B = document.getElementById("2");
@@ -30,9 +31,9 @@ var questions = [{
     correctAnswer: "c"},
     {
     question: "What is the correct syntax for referring to an external script called \"abc.js\"?",
-    answer1: "<script href=\"abc.js\">",
-    answer2: "<script name=\"abc.js\">",
-    answer3: "<script src=\"abc.js\">",
+    answer1: "script href=\"abc.js\"",
+    answer2: "script name=\"abc.js\"",
+    answer3: "script src=\"abc.js\"",
     answer4: "None of The Above",
     correctAnswer: "c"},
     {
@@ -45,6 +46,11 @@ var questions = [{
 ];
 
 var currentQuestionIndex = 0;
+var finalQuestionIndex = questions.length;
+var score = 0;
+var timeLeft=60;
+var timerInterval;
+var correct;
 
 
 function displayQuestion(){
@@ -57,16 +63,81 @@ function displayQuestion(){
     C.innerHTML = currentQuestion.answer3;
     D.innerHTML = currentQuestion.answer4;
 };
-// var displayQuestion = function () {
-//     var currentQuestion = questions[currentQuestionIndex];
-//     questionsEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
-//     A.innerHTML = currentQuestion.answer1;
-// };
+
+
+var startTimer = function() {
+    console.log("Timer is running");
+    timeInterval = setInterval(function() {
+        if (timeLeft > 0) {
+            timerEl.textContent = timeLeft;
+            timeLeft--
+        }
+        else {
+            timeInterval.textContent = '';
+            clearInterval(timeInterval);
+            alert("Time's up!");
+            endGame();
+        }
+    }, 1000);
+}
 
 function startQuiz(){
-
+    startTimer();
     displayQuestion();
   //  quizEl.style.display = "block";
+}
+
+var saveScore = function (event) {
+    event.preventDefault();
+    console.log('saveScore is running');
+    var initialsInput = document.querySelector("input[name='initials-input']").value;
+    if(initialsInput === "") {
+        alert("Initials cannot be blank!");
+        return false
+    }
+    else {
+        scoresArray.push({initials: initialsInput, score: score});
+        localStorage.setItem("score", JSON.stringify(scoresArray));
+        showScore();
+    }
+}
+
+var endGame = function() {
+    score = timeLeft;
+    currentScore.innerText = "Your score is " + score + "!"
+    questionsEl.classList.add('hidden');
+    initialsEl.classList.remove('hidden');
+}
+
+function showScore(){
+    quizEl.style.display = "none"
+    gameOverEl.style.display = "flex";
+    clearInterval(timerInterval);
+    initialsEl.value = "";
+    finalScoreEl.innerHTML = "You scored " + score + " out of " + questions.length + " correct!";
+}
+
+function checkAnswer(answer){
+    correct = questions[currentQuestionIndex].correctAnswer;
+
+    if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
+        score++;
+        
+        currentQuestionIndex++;
+        displayQuestion();
+    }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
+        // if answer is wrong, subtract 15 secs from timer 
+        timeLeft = (timeLeft - 15);
+
+        if(timeLeft === 0) {
+            clearInterval(timerInterval);
+            endGame();
+        }
+        currentQuestionIndex++;
+        displayQuestion();
+    }else{
+        showScore();
+    }
 }
 
 startBtnEl.addEventListener("click",startQuiz);
